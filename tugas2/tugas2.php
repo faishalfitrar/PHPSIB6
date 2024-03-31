@@ -83,9 +83,9 @@ if(isset($_POST['beli'])){
     $harber = ($total - $diskon) + $pajak; 
 ?>
 <center>
-    <h5>Nama Pelanggan : Rp<?= $nama ?></h5>
-    <h5>Produk Pilihan : Rp<?= $produk ?></h5>
-    <h5>Jumlah Beli : Rp<?= $jumlah ?></h5>
+    <h5>Nama Pelanggan : <?= $nama ?></h5>
+    <h5>Produk Pilihan : <?= $produk ?></h5>
+    <h5>Jumlah Beli : <?= $jumlah ?></h5>
     <h5>Harga Satuan : Rp<?= number_format($harsat) ?></h5>
     <h5>Total Belanja : Rp<?= number_format($total) ?></h5>
     <h5>Potongan Diskon : Rp<?= number_format($diskon) ?></h5>
