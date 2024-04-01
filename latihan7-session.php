@@ -1,3 +1,7 @@
+<?php 
+    session_start(); //sesi tangkap login
+?>
+
 <form action="" method="POST">
     <label for="">Username: </label>
     <input type="text" name="username" placeholder="Masukkan Username"><br><br>
@@ -14,7 +18,8 @@
         // jika username dan password cocok maka dapat login
         // selain itu ditolak
         if($username == 'admin' && $password == 'rahasia'){
-            header('location: beranda.php');
+            $_SESSION['user'] = $username;
+            header('location: berandasession.php');
         } else {
             echo "<script>alert('Password Anda Salah, Coba Lagi!!')</script>";
         }
