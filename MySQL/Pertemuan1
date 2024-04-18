@@ -1,0 +1,18 @@
+MariaDB [(none)]> CREATE DATABASE sib_6;
+MariaDB [(none)]> DROP DATABASE sib_6;
+MariaDB [(none)]> CREATE DATABASE sib_6;
+MariaDB [(none)]> USE sib_6;
+MariaDB [sib_6]> SHOW TABLES;
+MariaDB [sib_6]> CREATE  TABLE jenis(
+    -> id int primary key auto_increment,
+    -> nama varchar(30) NOT NULL unique);
+MariaDB [sib_6]> DESCRIBE jenis;
+MariaDB [sib_6]> DESC jenis;
+MariaDB [sib_6]> CREATE TABLE produk(
+    -> id int primary key auto_increment,
+    -> nama varchar(30) NOT NULL unique,
+    -> harga double NOT NULL,
+    -> stok int NOT NULL,
+    -> idjenis int NOT NULL REFERENCES jenis(id),
+    -> foto varchar(255));
+MariaDB [sib_6]> DESC produk;
