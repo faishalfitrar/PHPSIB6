@@ -1,0 +1,332 @@
+Microsoft Windows [Version 10.0.19045.4291]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\faish>cd C:
+C:\Users\faish
+
+C:\Users\faish>cd xamppnew
+The system cannot find the path specified.
+
+C:\Users\faish>cd xamppnew/
+The system cannot find the path specified.
+
+C:\Users\faish>cd C:
+C:\Users\faish
+
+C:\Users\faish>cd xamppnew
+The system cannot find the path specified.
+
+C:\Users\faish>php --version
+PHP 8.2.12 (cli) (built: Oct 24 2023 21:15:15) (ZTS Visual C++ 2019 x64)
+Copyright (c) The PHP Group
+Zend Engine v4.2.12, Copyright (c) Zend Technologies
+
+C:\Users\faish>cd \xamppnew
+
+C:\xamppnew>cd \mysql
+The system cannot find the path specified.
+
+C:\xamppnew>cd mysql
+
+C:\xamppnew\mysql>cd bin
+
+C:\xamppnew\mysql\bin>mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 22
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> USE sib_6
+Database changed
+MariaDB [sib_6]> SHOW TABLES;
++-----------------+
+| Tables_in_sib_6 |
++-----------------+
+| jenis           |
+| produk          |
++-----------------+
+2 rows in set (0.002 sec)
+
+MariaDB [sib_6]> desc jenis;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int(11)     | NO   | PRI | NULL    | auto_increment |
+| nama  | varchar(30) | NO   | UNI | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+2 rows in set (0.486 sec)
+
+MariaDB [sib_6]> ALTER TABLE jenis ADD COLUMN
+    -> keterangan varchar(20) AFTER nama;
+Query OK, 0 rows affected (0.191 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [sib_6]> DESC jenis;
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| id         | int(11)     | NO   | PRI | NULL    | auto_increment |
+| nama       | varchar(30) | NO   | UNI | NULL    |                |
+| keterangan | varchar(20) | YES  |     | NULL    |                |
++------------+-------------+------+-----+---------+----------------+
+3 rows in set (0.060 sec)
+
+MariaDB [sib_6]> SHOW TABLES;
++-----------------+
+| Tables_in_sib_6 |
++-----------------+
+| jenis           |
+| produk          |
++-----------------+
+2 rows in set (0.023 sec)
+
+MariaDB [sib_6]> ALTER TABLE jenis RENAME TO jeniss;
+Query OK, 0 rows affected (0.195 sec)
+
+MariaDB [sib_6]> SHOW TABLES;
++-----------------+
+| Tables_in_sib_6 |
++-----------------+
+| jeniss          |
+| produk          |
++-----------------+
+2 rows in set (0.425 sec)
+
+MariaDB [sib_6]> ALTER TABLE jeniss RENAME TO jenis;
+Query OK, 0 rows affected (0.060 sec)
+
+MariaDB [sib_6]> SHOW TABLES;
++-----------------+
+| Tables_in_sib_6 |
++-----------------+
+| jenis           |
+| produk          |
++-----------------+
+2 rows in set (0.001 sec)
+
+MariaDB [sib_6]> DESC produk;
++---------+--------------+------+-----+---------+----------------+
+| Field   | Type         | Null | Key | Default | Extra          |
++---------+--------------+------+-----+---------+----------------+
+| id      | int(11)      | NO   | PRI | NULL    | auto_increment |
+| nama    | varchar(30)  | NO   | UNI | NULL    |                |
+| harga   | double       | NO   |     | NULL    |                |
+| stok    | int(11)      | NO   |     | NULL    |                |
+| idjenis | int(11)      | NO   |     | NULL    |                |
+| foto    | varchar(255) | YES  |     | NULL    |                |
++---------+--------------+------+-----+---------+----------------+
+6 rows in set (0.286 sec)
+
+MariaDB [sib_6]> ALTER TABLE produk CHANGE idjenis id_jenis
+    -> SFS
+    -> SDFSFDS
+    -> SDFS;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'SDFSFDS
+SDFS' at line 3
+MariaDB [sib_6]> ALTER TABLE produk CHANGE stok stock
+    -> int NOT NULL;
+Query OK, 0 rows affected (0.053 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [sib_6]> DESC PRODUK;
++---------+--------------+------+-----+---------+----------------+
+| Field   | Type         | Null | Key | Default | Extra          |
++---------+--------------+------+-----+---------+----------------+
+| id      | int(11)      | NO   | PRI | NULL    | auto_increment |
+| nama    | varchar(30)  | NO   | UNI | NULL    |                |
+| harga   | double       | NO   |     | NULL    |                |
+| stock   | int(11)      | NO   |     | NULL    |                |
+| idjenis | int(11)      | NO   |     | NULL    |                |
+| foto    | varchar(255) | YES  |     | NULL    |                |
++---------+--------------+------+-----+---------+----------------+
+6 rows in set (0.057 sec)
+
+MariaDB [sib_6]> ALTER TABLE produk MODIFY stock double AFTER harga;
+Query OK, 0 rows affected (0.181 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [sib_6]> DESC PRODUK;
++---------+--------------+------+-----+---------+----------------+
+| Field   | Type         | Null | Key | Default | Extra          |
++---------+--------------+------+-----+---------+----------------+
+| id      | int(11)      | NO   | PRI | NULL    | auto_increment |
+| nama    | varchar(30)  | NO   | UNI | NULL    |                |
+| harga   | double       | NO   |     | NULL    |                |
+| stock   | double       | YES  |     | NULL    |                |
+| idjenis | int(11)      | NO   |     | NULL    |                |
+| foto    | varchar(255) | YES  |     | NULL    |                |
++---------+--------------+------+-----+---------+----------------+
+6 rows in set (0.047 sec)
+
+MariaDB [sib_6]> DESC jenis;
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| id         | int(11)     | NO   | PRI | NULL    | auto_increment |
+| nama       | varchar(30) | NO   | UNI | NULL    |                |
+| keterangan | varchar(20) | YES  |     | NULL    |                |
++------------+-------------+------+-----+---------+----------------+
+3 rows in set (0.076 sec)
+
+MariaDB [sib_6]> INSERT INTO jenis VALUES ('','Furniture'.''),
+    -> ('',Elektronik,''),
+    -> ('','Minuman','');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.''),
+('',Elektronik,''),
+('','Minuman','')' at line 1
+MariaDB [sib_6]> INSERT INTO jenis VALUES ('','Furniture',''),
+    -> ('',Elektronik,''),
+    -> ('','Minuman','');
+ERROR 1054 (42S22): Unknown column 'Elektronik' in 'field list'
+MariaDB [sib_6]> INSERT INTO jenis VALUES ('','Furniture'.''),
+    -> ('','Elektronik',''),
+    -> ('','Minuman','');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.''),
+('','Elektronik',''),
+('','Minuman','')' at line 1
+MariaDB [sib_6]> INSERT INTO jenis VALUES ('','Furniture',''),
+    -> ('','Elektronik',''),
+    -> ('','Minuman','');
+Query OK, 3 rows affected, 3 warnings (0.048 sec)
+Records: 3  Duplicates: 0  Warnings: 3
+
+MariaDB [sib_6]> SELECT * FROM jenis;
++----+------------+------------+
+| id | nama       | keterangan |
++----+------------+------------+
+|  1 | Furniture  |            |
+|  2 | Elektronik |            |
+|  3 | Minuman    |            |
++----+------------+------------+
+3 rows in set (0.032 sec)
+
+MariaDB [sib_6]> desc PRODUK;
++---------+--------------+------+-----+---------+----------------+
+| Field   | Type         | Null | Key | Default | Extra          |
++---------+--------------+------+-----+---------+----------------+
+| id      | int(11)      | NO   | PRI | NULL    | auto_increment |
+| nama    | varchar(30)  | NO   | UNI | NULL    |                |
+| harga   | double       | NO   |     | NULL    |                |
+| stock   | double       | YES  |     | NULL    |                |
+| idjenis | int(11)      | NO   |     | NULL    |                |
+| foto    | varchar(255) | YES  |     | NULL    |                |
++---------+--------------+------+-----+---------+----------------+
+6 rows in set (0.047 sec)
+
+MariaDB [sib_6]> INSERT INTO produk (nama, harga, stock, idjenis, foto)
+    -> VALUES
+    -> ('TV',3000000,20,2,'');
+Query OK, 1 row affected (0.010 sec)
+
+MariaDB [sib_6]> SELECT * FROM produk;
++----+------+---------+-------+---------+------+
+| id | nama | harga   | stock | idjenis | foto |
++----+------+---------+-------+---------+------+
+|  1 | TV   | 3000000 |    20 |       2 |      |
++----+------+---------+-------+---------+------+
+1 row in set (0.001 sec)
+
+MariaDB [sib_6]> INSERT INTO produk (nama, harga, stock, idjenis, foto)
+    -> VALUES
+    -> ('Radio', 2000000, 10, 2, ''),
+    -> ('Meja', 1000000, 5, 1, ''),
+    -> ('Kursi', 1000000, 5, 1, ''),
+    -> ('Nasi Goreng', 15000, 10, 3, ''),
+    -> ('Es Campur', 10000, 10, 4, '');
+Query OK, 5 rows affected (0.009 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+MariaDB [sib_6]> SELECT * FROM produk;
++----+-------------+---------+-------+---------+------+
+| id | nama        | harga   | stock | idjenis | foto |
++----+-------------+---------+-------+---------+------+
+|  1 | TV          | 3000000 |    20 |       2 |      |
+|  2 | Radio       | 2000000 |    10 |       2 |      |
+|  3 | Meja        | 1000000 |     5 |       1 |      |
+|  4 | Kursi       | 1000000 |     5 |       1 |      |
+|  5 | Nasi Goreng |   15000 |    10 |       3 |      |
+|  6 | Es Campur   |   10000 |    10 |       4 |      |
++----+-------------+---------+-------+---------+------+
+6 rows in set (0.001 sec)
+
+MariaDB [sib_6]> UPDATE jenis SET keterangan = 'Ini adalah furniture'
+    -> WHERE id = 1;
+Query OK, 1 row affected (0.009 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [sib_6]> SELECT * FROM jenis;
++----+------------+----------------------+
+| id | nama       | keterangan           |
++----+------------+----------------------+
+|  1 | Furniture  | Ini adalah furniture |
+|  2 | Elektronik |                      |
+|  3 | Minuman    |                      |
++----+------------+----------------------+
+3 rows in set (0.001 sec)
+
+MariaDB [sib_6]> UPDATE jenis SET keterangan = 'Ini adalah elektronik'
+    -> WHERE id = 2;
+Query OK, 1 row affected, 1 warning (0.009 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+MariaDB [sib_6]> UPDATE jenis SET keterangan = 'Ini adalah elektronik'
+    -> WHERE id = 3;
+Query OK, 1 row affected, 1 warning (0.008 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+MariaDB [sib_6]> UPDATE jenis SET keterangan = 'Ini adalah makanan'
+    -> WHERE id = 3;
+Query OK, 1 row affected (0.009 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [sib_6]> UPDATE jenis SET keterangan = 'Ini adalah minuman'
+    -> WHERE id = 4;
+Query OK, 0 rows affected (0.001 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+MariaDB [sib_6]> SELECT * FROM jenis;
++----+------------+----------------------+
+| id | nama       | keterangan           |
++----+------------+----------------------+
+|  1 | Furniture  | Ini adalah furniture |
+|  2 | Elektronik | Ini adalah elektroni |
+|  3 | Minuman    | Ini adalah makanan   |
++----+------------+----------------------+
+3 rows in set (0.001 sec)
+
+MariaDB [sib_6]> UPDATE produk SET harga = 20000, stock = 20
+    -> WHERE id = 5;
+Query OK, 1 row affected (0.046 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [sib_6]> SELECT * FROM produk;
++----+-------------+---------+-------+---------+------+
+| id | nama        | harga   | stock | idjenis | foto |
++----+-------------+---------+-------+---------+------+
+|  1 | TV          | 3000000 |    20 |       2 |      |
+|  2 | Radio       | 2000000 |    10 |       2 |      |
+|  3 | Meja        | 1000000 |     5 |       1 |      |
+|  4 | Kursi       | 1000000 |     5 |       1 |      |
+|  5 | Nasi Goreng |   20000 |    20 |       3 |      |
+|  6 | Es Campur   |   10000 |    10 |       4 |      |
++----+-------------+---------+-------+---------+------+
+6 rows in set (0.001 sec)
+
+MariaDB [sib_6]> DELETE FROM produk WHERE id = 4;
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [sib_6]> SELECT * FROM produk;
++----+-------------+---------+-------+---------+------+
+| id | nama        | harga   | stock | idjenis | foto |
++----+-------------+---------+-------+---------+------+
+|  1 | TV          | 3000000 |    20 |       2 |      |
+|  2 | Radio       | 2000000 |    10 |       2 |      |
+|  3 | Meja        | 1000000 |     5 |       1 |      |
+|  5 | Nasi Goreng |   20000 |    20 |       3 |      |
+|  6 | Es Campur   |   10000 |    10 |       4 |      |
++----+-------------+---------+-------+---------+------+
+5 rows in set (0.001 sec)
